@@ -16,20 +16,29 @@ from tensorflow.examples.tutorials.mnist import input_data
 mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
 
 # Parameters
+#关键的参数定义
+#1.学习速率(步长)
 learning_rate = 0.001
+#2.迭代次数
 training_iters = 200000
+#3.每批次数据量大小,即每个批次的样本数
 batch_size = 128
 display_step = 10
 
 # Network Parameters
+#网络相关参数
+#1.输入，因为图像是28*28的，所以拉平了就是784
 n_input = 784 # MNIST data input (img shape: 28*28)
+#2.分成多少类
 n_classes = 10 # MNIST total classes (0-9 digits)
+#3.dropput设置，以0.75的概率进行随机失活
 dropout = 0.75 # Dropout, probability to keep units
 
-# tf Graph input
+# 定义Graph的输入
 x = tf.placeholder(tf.float32, [None, n_input])
 y = tf.placeholder(tf.float32, [None, n_classes])
-keep_prob = tf.placeholder(tf.float32) #dropout (keep probability)
+#dropout (也可以叫留存率)
+keep_prob = tf.placeholder(tf.float32) 
 
 
 # Create some wrappers for simplicity
